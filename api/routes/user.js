@@ -8,9 +8,9 @@ const AuthController = require('../controllers/auth');
 
 router.post("/login", AuthController.login);
 
-router.post("/register", UserController.user_register);
+router.post("/register", checkAuth, checkAdminAuth, UserController.user_register);
 
-router.get("", checkAuth, UserController.users_list);
+router.get("", checkAuth, checkAdminAuth, UserController.users_list);
 
 router.get("/:userId", checkAuth, checkAdminAuth, UserController.user_detail);
 

@@ -17,16 +17,16 @@ const productOriginRoutes = require('./api/routes/product-origin');
 const supplierRoutes = require('./api/routes/supplier');
 const inventoryRoutes = require('./api/routes/inventory');
 
-mongoose.connect('mongodb+srv://the-medic-admin:' + process.env.MONGO_ATLAS_PW +'@the-medics-demo.nup3i.azure.mongodb.net/the-medics-demo?retryWrites=true&w=majority', {useNewUrlParser: true});
+//mongoose.connect('mongodb+srv://the-medic-admin:' + process.env.MONGO_ATLAS_PW +'@the-medics-demo.nup3i.azure.mongodb.net/the-medics-demo?retryWrites=true&w=majority', {useNewUrlParser: true});
 
 //mongoose.connect('mongodb://the-medics-db:' + process.env.MONGO_ATLAS_PW +'@the-medics-db.documents.azure.com:10255/mean-dev?ssl=true&sslverifycertificate=false');
 //mongoose.connect('mongodb://the-medics-db:YxykP1zfU8eS9FPPoJyQag66WakMgxEmsoTEqewKMaTBbUgUMvPpHjTkc5nXDvBTGBacREBajJAOjLiRjkLypA==@the-medics-db.documents.azure.com:10255/?ssl=true&replicaSet=globaldb')
-// mongoose.connect('mongodb://the-medics-db.documents.azure.com:10255/the-medics-db?ssl=true', {
-//     auth: {
-//       user: 'the-medics-db',
-//       password: 'YxykP1zfU8eS9FPPoJyQag66WakMgxEmsoTEqewKMaTBbUgUMvPpHjTkc5nXDvBTGBacREBajJAOjLiRjkLypA=='
-//     }
-//   })
+mongoose.connect('mongodb://the-medics-db.documents.azure.com:10255/the-medics-db?ssl=true', {
+    auth: {
+      user: 'the-medics-db',
+      password: 'YxykP1zfU8eS9FPPoJyQag66WakMgxEmsoTEqewKMaTBbUgUMvPpHjTkc5nXDvBTGBacREBajJAOjLiRjkLypA=='
+    }
+  })
 
 app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({extended: false}));
