@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const User = require("../models/user");
 
 exports.user_register = (req, res, next) => {
+    console.log(1);
     User.find({ username: req.body.username })
         .exec()
         .then(user => {
