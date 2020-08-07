@@ -11,7 +11,7 @@ exports.supplier_register = (req, res, next) => {
                     message: "Supplier already registered"
                 });
             } else {
-                const supplier = new Branch({
+                const supplier = new Supplier({
                     _id: new mongoose.Types.ObjectId(),
                     name: req.body.name,
                     address: req.body.address,
@@ -50,7 +50,7 @@ exports.supplier_list = (req, res, next) => {
         .then(docs => {
             console.log(docs);
             res.status(200).json({
-                suppliers: docs,
+                items: docs,
                 count: docs.length
             });
         })

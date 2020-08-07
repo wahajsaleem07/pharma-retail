@@ -44,7 +44,7 @@ exports.listall = (req, res, next) => {
         .exec()
         .then(docs => {
             res.status(200).json({
-                objes: docs,
+                items: docs,
                 count: docs.length
             });
         })
@@ -56,7 +56,7 @@ exports.listall = (req, res, next) => {
 }
 
 exports.detail = (req, res, next) => {
-    const id = req.params.pCatId;
+    const id = req.params.pOriginId;
     ProductOrigin.findById(id)
         .exec()
         .then(doc => {
@@ -74,7 +74,7 @@ exports.detail = (req, res, next) => {
 }
 
 exports.patch = (req, res, next) => {
-    const id = req.params.pCatId;
+    const id = req.params.pOriginId;
     const updateOps = {};
     for (const ops of req.body) {
         updateOps[ops.propName] = ops.value;
@@ -94,11 +94,11 @@ exports.patch = (req, res, next) => {
 }
 
 exports.delete = (req, res, next) => {
-    ProductOrigin.remove({ _id: req.params.pCatId })
+    ProductOrigin.remove({ _id: req.params.pOriginId })
         .exec()
         .then(result => {
             res.status(200).json({
-                message: "Product Category deleted successfully"
+                message: "Product Origin deleted successfully"
             });
         })
         .catch(err => {

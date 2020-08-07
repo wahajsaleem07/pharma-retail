@@ -5,7 +5,8 @@ const checkAuth = require('../middleware/check-auth');
 const BrandController = require('../controllers/brands');
 const ImageUploader = require('../middleware/image-upload');
 
-router.post("", checkAuth, ImageUploader.upload.single('logo'), BrandController.brand_register);
+//router.post("", checkAuth, ImageUploader.upload.single('logo'), BrandController.brand_register);
+router.post("", checkAuth, BrandController.brand_register);
 
 router.get("/", checkAuth, BrandController.brands_list);
 
