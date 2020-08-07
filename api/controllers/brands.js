@@ -15,13 +15,14 @@ exports.brand_register = (req, res, next) => {
                 const brand = new Brand({
                     _id: new mongoose.Types.ObjectId(),
                     name: req.body.name,
-                    logo: req.file.path,
-                    address: req.body.address,
                     code: req.body.code,
-                    countryId: req.body.countryId,
+                    registrationNumber: req.body.registrationNumber,
+                    status: req.body.status,
+                    //countryId: req.body.countryId,
+                    address: req.body.address,
+                    //logo: req.file.path,
                     province: req.body.province,
-                    city: req.body.city,
-                    status: req.body.status
+                    city: req.body.city
                 });
 
                 brand
@@ -53,7 +54,7 @@ exports.brands_list = (req, res, next) => {
         .then(docs => {
             console.log(docs);
             res.status(200).json({
-                branches: docs,
+                items: docs,
                 count: docs.length
             });
         })

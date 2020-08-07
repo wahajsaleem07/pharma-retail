@@ -7,11 +7,13 @@ const ImageUploader = require('../middleware/image-upload');
 
 router.get("", checkAuth, ProductController.getall);
 
-router.post("", checkAuth, ImageUploader.upload.single('image'), ProductController.register);
+//router.post("", checkAuth, ImageUploader.upload.single('image'), ProductController.register);
+router.post("", checkAuth, ProductController.register);
 
 router.get("/:productId", checkAuth, ProductController.get);
 
 router.patch("/:productId", checkAuth, ProductController.update);
+//router.put("/:productId", checkAuth, ProductController.update);
 
 router.delete("/:productId", checkAuth, ProductController.remove);
 

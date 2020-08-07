@@ -44,7 +44,7 @@ exports.listall = (req, res, next) => {
         .exec()
         .then(docs => {
             res.status(200).json({
-                objes: docs,
+                items: docs,
                 count: docs.length
             });
         })

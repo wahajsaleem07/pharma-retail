@@ -17,7 +17,7 @@ exports.register = (req, res, next) => {
                     code: req.body.code,
                     description: req.body.description
                 });
-
+                console.log(1);
                 productCat
                     .save()
                     .then(result => {
@@ -44,7 +44,7 @@ exports.listall = (req, res, next) => {
         .exec()
         .then(docs => {
             res.status(200).json({
-                obj: docs,
+                items: docs,
                 count: docs.length
             });
         })

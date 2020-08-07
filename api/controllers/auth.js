@@ -32,9 +32,20 @@ exports.login = (req, res, next) => {
                             expiresIn: "1h"
                         }
                     );
+                    const userObj = {
+                        id: user[0]._id,
+                        username: user[0].username,
+                        firstName: user[0].first_name,
+                        lastName: user[0].last_name,
+                        branchId: user[0].branch_id,
+                        userRole: user[0].user_role.value,
+                        status: user[0].status,
+                        token: token
+                    };
+
                     return res.status(200).json({
                         message: "Authorization successful",
-                        token: token
+                        user: userObj
                     });
                 }
                 res.status(401).json({

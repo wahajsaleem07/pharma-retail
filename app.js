@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose");
+const cors = require('cors')
 
 require('./api/models/Country');
 
@@ -19,13 +20,14 @@ mongoose.connect('mongodb+srv://the-medic-admin:' + process.env.MONGO_ATLAS_PW +
 
 app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+app.use(cors());
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Header", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
 
     if(req.method === 'OPTIONS'){
-        res.header("Access-Control-Allow-Methods", "PUT. POST, GET, DELETE, PATCH");
+        res.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH");
         return res.status(200).json({});
     }
     next();
@@ -37,7 +39,7 @@ app.use('/lookup', lookupRoutes);
 app.use('/user', userRoutes);
 app.use('/branch', branchRoutes);
 app.use('/brand', brandRoutes);
-app.use('/product-categories', productCategoriesRoutes);
+app.use('/product-category', productCategoriesRoutes);
 app.use('/product-origin', productOriginRoutes);
 app.use('/product-type', productTypeRoutes);
 app.use('/supplier', supplierRoutes);

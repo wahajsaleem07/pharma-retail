@@ -15,7 +15,7 @@ exports.register = (req, res, next) => {
                     _id: new mongoose.Types.ObjectId(),
                     name: req.body.name,
                     code: req.body.code,
-                    image: req.file.path,
+                    //image: req.file.path,
                     narco_flag: req.body.narcoFlag,
                     dosage: req.body.dosage,
                     brandId: req.body.brandId,
@@ -52,7 +52,10 @@ exports.getall = (req, res, next) => {
         .then(docs => {
             console.log(docs);
             if (docs.length >= 0) {
-                res.status(200).json(docs);
+                res.status(200).json({
+                    items: docs,
+                    count: docs.length
+                });
             } else {
                 res.status(404).json({
                     message: 'No entries found'
