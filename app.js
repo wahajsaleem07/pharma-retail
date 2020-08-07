@@ -15,6 +15,7 @@ const productCategoriesRoutes = require('./api/routes/product-categories');
 const productTypeRoutes = require('./api/routes/product-type');
 const productOriginRoutes = require('./api/routes/product-origin');
 const supplierRoutes = require('./api/routes/supplier');
+const inventoryRoutes = require('./api/routes/inventory');
 
 mongoose.connect('mongodb+srv://the-medic-admin:' + process.env.MONGO_ATLAS_PW +'@the-medics-demo.nup3i.azure.mongodb.net/the-medics-demo?retryWrites=true&w=majority', {useNewUrlParser: true});
 
@@ -43,6 +44,7 @@ app.use('/product-category', productCategoriesRoutes);
 app.use('/product-origin', productOriginRoutes);
 app.use('/product-type', productTypeRoutes);
 app.use('/supplier', supplierRoutes);
+app.use('/inventory', inventoryRoutes);
 
 //Error Handling
 app.use((req, res, next) => {
