@@ -5,6 +5,32 @@ const jwt = require("jsonwebtoken");
 
 const User = require("../models/user");
 
+const Lookup = require("../models/lookup");
+
+exports.lookup = (req, res, next) => {
+    const branch = new Lookup({
+        _id: new mongoose.Types.ObjectId(),
+        value: "Saleman",
+        code: "SALEMAN",
+        lookup_type: "Employee_Role"
+    });
+
+    branch
+        .save()
+        .then(result => {
+            res.status(201).json({
+                message: "Branch has been created successfully",
+                userName: result
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            });
+        });
+}
+
 exports.login = (req, res, next) => {
     User.find({ username: req.body.username })
         .populate('user_role', 'value')

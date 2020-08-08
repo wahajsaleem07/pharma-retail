@@ -1,7 +1,7 @@
 {
     "env": {
         "MONGO_ATLAS_PW": "test-password",
-        "JWT_KEY": "test-token",
-        "JWT_ADMIN_KEY": "test-admin-token"
+        "JWT_KEY": "my-secret-key-i-hash-aq",
+        "JWT_ADMIN_KEY": "my-secret-key-i-hash-aq-admin"
     }
 }
