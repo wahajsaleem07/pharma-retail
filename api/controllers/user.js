@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+//const bcrypt = require("bcrypt");
 
 const User = require("../models/user");
 
@@ -13,45 +13,45 @@ exports.user_register = (req, res, next) => {
                     message: "Username already given to an employee"
                 });
             } else {
-                bcrypt.hash(req.body.password, 10, (err, hash) => {
-                    if (err) {
-                        return res.status(500).json({
-                            error: err
-                        });
-                    } else {
-                        const user = new User({
-                            _id: new mongoose.Types.ObjectId(),
-                            password: hash,
-                            username: req.body.username,
-                            first_name: req.body.firstName,
-                            last_name: req.body.lastName,
-                            address: req.body.address,
-                            phone_number: req.body.phoneNumber,
-                            date_of_birth: req.body.dateOfBirth,
-                            country: req.body.country,
-                            province: req.body.province,
-                            city: req.body.city,
-                            branch_id: req.body.branchId,
-                            status: req.body.status,
-                            user_role: req.body.userRole
-                        });
+                // bcrypt.hash(req.body.password, 10, (err, hash) => {
+                //     if (err) {
+                //         return res.status(500).json({
+                //             error: err
+                //         });
+                //     } else {
+                //         const user = new User({
+                //             _id: new mongoose.Types.ObjectId(),
+                //             password: hash,
+                //             username: req.body.username,
+                //             first_name: req.body.firstName,
+                //             last_name: req.body.lastName,
+                //             address: req.body.address,
+                //             phone_number: req.body.phoneNumber,
+                //             date_of_birth: req.body.dateOfBirth,
+                //             country: req.body.country,
+                //             province: req.body.province,
+                //             city: req.body.city,
+                //             branch_id: req.body.branchId,
+                //             status: req.body.status,
+                //             user_role: req.body.userRole
+                //         });
 
-                        user
-                            .save()
-                            .then(result => {
-                                res.status(201).json({
-                                    message: "User has been created successfully",
-                                    userName: result.username
-                                });
-                            })
-                            .catch(err => {
-                                console.log(err);
-                                res.status(500).json({
-                                    error: err
-                                });
-                            });
-                    }
-                });
+                //         user
+                //             .save()
+                //             .then(result => {
+                //                 res.status(201).json({
+                //                     message: "User has been created successfully",
+                //                     userName: result.username
+                //                 });
+                //             })
+                //             .catch(err => {
+                //                 console.log(err);
+                //                 res.status(500).json({
+                //                     error: err
+                //                 });
+                //             });
+                //     }
+                // });
             }
         });
 }
